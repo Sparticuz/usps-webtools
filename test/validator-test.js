@@ -43,6 +43,7 @@ test("Address verify should validate Building", async (t) => {
     Zip5: "98031",
   });
   t.is(address.Address2, "BLDG 2");
+  t.is(address.Zip4, undefined);
 });
 
 test("Address verify should validate Floor", async (t) => {
