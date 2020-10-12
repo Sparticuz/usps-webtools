@@ -85,6 +85,10 @@ export default async function (
           ? properCase(response.FirmName)
           : undefined;
       }
+      response.Zip4 =
+        typeof response.Zip4 === "object"
+          ? undefined
+          : response.Zip4?.toString();
       return response;
     }
     throw new Error("Can't find results");
