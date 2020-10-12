@@ -22,6 +22,7 @@
   "scripts": {
     "lint": "eslint \"**/*.[jt]s\"",
     "build": "rm -rf dist && tsc -p tsconfig.json",
+    "pretest": "npm run build",
     "test": "ava --timeout=30s"
   },
   "keywords": [
