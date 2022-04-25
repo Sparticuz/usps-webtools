@@ -11,11 +11,8 @@ jobs:
   publish-npm:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
-          registry-url: https://registry.npmjs.org/
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
       - run: npm ci
       - run: npm run build
       - run: npm publish
@@ -25,11 +22,8 @@ jobs:
   publish-gpr:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
-          registry-url: https://npm.pkg.github.com/
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
       - run: npm ci
       - run: npm run build
       - run: npm publish
