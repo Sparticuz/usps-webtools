@@ -2,7 +2,7 @@
   "name": "usps-webtools-promise",
   "author": "Kyle McNally <kyle@kmcnally.net>",
   "description": "API wrapper for the USPS Web-Tools, with Promises!",
-  "version": "3.1.4",
+  "version": "4.0.0",
   "main": "./dist/usps.js",
   "types": "./dist/usps.d.ts",
   "contributors": [
