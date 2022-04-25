@@ -45,7 +45,7 @@ const makeRequest = async (
           const xml = create(body);
           resolve(xml.end({ format: "object" }) as USPSResponse);
         } catch (error) {
-          reject(new Error(error));
+          reject(new Error(error as string));
         }
       });
     });

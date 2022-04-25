@@ -93,6 +93,6 @@ export default async function (
     }
     throw new Error("Can't find results");
   } catch (error) {
-    throw new Error(error);
+    throw new Error(error as string);
   }
 }

@@ -31,15 +31,15 @@ export default (value: string): string => {
     "To",
     "With",
   ];
-  for (const [index, _value] of Object.keys(lowers).entries()) {
+  for (const [index] of Object.keys(lowers).entries()) {
     string = string.replace(new RegExp(`\\s${lowers[index]}\\s`, "g"), (txt) =>
       txt.toLowerCase()
     );
   }
 
   // Certain words such as initialisms or acronyms should be left uppercase
-  const uppers = ["Ne", "Nw", "Se", "Sw"];
-  for (const [index, _value] of Object.keys(uppers).entries()) {
+  const uppers = ["Ne", "Nw", "Po", "Se", "Sw"];
+  for (const [index] of Object.keys(uppers).entries()) {
     string = string.replace(new RegExp(`\\b${uppers[index]}\\b`, "g"), (txt) =>
       txt.toUpperCase()
     );

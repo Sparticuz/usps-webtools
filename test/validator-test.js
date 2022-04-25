@@ -17,15 +17,19 @@ test("Address verify should validate apartment", async (t) => {
   t.is(address.Address2, "APT 2");
 });
 
-test("Address verify should validate Unit", async (t) => {
-  const address = await usps.verify({
+test("Address return proper case", async (t) => {
+  const uspsCase = new USPS({
+    properCase: true,
+    userId: process.env.USPS_ID,
+  });
+  const address = await uspsCase.verify({
     Address1: "11205 SE 233RD PL.",
     Address2: "UNIT 2",
     City: "Kent",
     State: "WA",
     Zip5: "98031",
   });
-  t.is(address.Address2, "UNIT 2");
+  t.is(address.Address2, "Unit 2");
 });
 
 test("Address verify should validate Building", async (t) => {

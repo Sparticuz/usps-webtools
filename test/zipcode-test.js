@@ -12,8 +12,21 @@ test("Zipcode Lookup should return the address with zip", async (t) => {
     City: "Oakland",
     State: "CA",
   });
-  const zip = `${address.Zip5}-${address.Zip4}`;
-  t.is(zip, "94607-3785");
+  t.is(`${address.Zip5}-${address.Zip4}`, "94607-3785");
+});
+
+test("Zipcode Lookup should return proper case", async (t) => {
+  const uspsCase = new USPS({
+    properCase: true,
+    userId: process.env.USPS_ID,
+  });
+  const address = await uspsCase.zipCodeLookup({
+    Address1: "121 EMBARCADERO WEST",
+    Address2: "Apt 2205",
+    City: "OAKLAND",
+    State: "CA",
+  });
+  t.is(address.City, "Oakland");
 });
 
 test("Zipcode Lookup should error if address is invalid", async (t) => {
