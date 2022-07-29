@@ -1,0 +1,12 @@
+{
+  // extend your base config to share compilerOptions, etc
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "removeComments": true,
+    "sourceMap": false
+  },
+  "exclude": [
+    "test",
+  ],
+}
