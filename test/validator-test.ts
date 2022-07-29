@@ -1,9 +1,9 @@
 /* eslint-disable sonarjs/no-duplicate-string */
-const test = require("ava");
-const USPS = require("../dist/usps").default;
+import test from "ava";
+import USPS from "../src/usps";
 
 const usps = new USPS({
-  userId: process.env.USPS_ID,
+  userId: process.env["USPS_ID"] as string,
 });
 
 test("Address verify should validate apartment", async (t) => {
@@ -20,7 +20,7 @@ test("Address verify should validate apartment", async (t) => {
 test("Address return proper case", async (t) => {
   const uspsCase = new USPS({
     properCase: true,
-    userId: process.env.USPS_ID,
+    userId: process.env["USPS_ID"] as string,
   });
   const address = await uspsCase.verify({
     Address1: "11205 SE 233RD PL.",
@@ -65,7 +65,7 @@ test("Multiple Businesses as single locaion", async (t) => {
     });
   });
   t.is(
-    error.message,
+    error?.message,
     "Error: Multiple addresses were found for the information you entered, and no default exists."
   );
 });
