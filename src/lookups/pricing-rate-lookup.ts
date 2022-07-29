@@ -108,6 +108,7 @@ export interface RateV4Response {
   Package?: RateV4Package;
 }
 
+// eslint-disable-next-line func-names
 export default async function (
   this: USPSClass,
   pricingRate: PricingRateInput

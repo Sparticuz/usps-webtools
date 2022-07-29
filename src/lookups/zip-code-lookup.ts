@@ -29,7 +29,7 @@ export interface ZipCodeLookupResponse {
   Error?: ErrorResponse;
 }
 
-// eslint-disable-next-line sonarjs/cognitive-complexity
+// eslint-disable-next-line sonarjs/cognitive-complexity, func-names
 export default async function (
   this: USPSClass,
   address: Address

@@ -98,7 +98,7 @@ export default async (
     XML: xml,
   });
 
-  const staging = config.staging ? config.staging : false;
+  const staging = config.staging ?? false;
 
   const options: RequestOptions = {
     hostname: staging

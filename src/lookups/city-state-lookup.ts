@@ -18,6 +18,7 @@ export interface CityStateLookupResponse {
   };
 }
 
+// eslint-disable-next-line func-names
 export default async function (
   this: USPSClass,
   zip: string

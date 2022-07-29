@@ -41,7 +41,7 @@ export interface AddressValidateResponse {
   Zip5?: string;
 }
 
-// eslint-disable-next-line sonarjs/cognitive-complexity
+// eslint-disable-next-line sonarjs/cognitive-complexity, func-names
 export default async function (
   this: USPSClass,
   address: Address
