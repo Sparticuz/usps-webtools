@@ -1,4 +1,4 @@
-// eslint-disable-next-line node/no-unpublished-require
+// eslint-disable-next-line n/no-unpublished-require, import/no-extraneous-dependencies
 require("@rushstack/eslint-patch/modern-module-resolution");
 
 module.exports = {
