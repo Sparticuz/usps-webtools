@@ -1,7 +1,7 @@
-import type USPSClass from "../usps";
-import type { ErrorResponse } from "../usps";
-import callUSPS from "../utils/request";
-import properCase from "../utils/proper-case";
+import type USPSClass from "../usps.js";
+import type { ErrorResponse } from "../usps.js";
+import callUSPS from "../utils/request.js";
+import properCase from "../utils/proper-case.js";
 
 export interface CityStateLookupRequest {
   ZipCode: {
