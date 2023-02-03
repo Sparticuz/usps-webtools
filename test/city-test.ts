@@ -1,6 +1,7 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 import test from "ava";
-import USPS from "../src/usps";
-import type { CityStateLookupResponse } from "../src/lookups/city-state-lookup";
+import USPS from "../src/usps.js";
+import type { CityStateLookupResponse } from "../src/lookups/city-state-lookup.js";
 
 const usps = new USPS({
   userId: process.env["USPS_ID"] as string,
