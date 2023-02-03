@@ -1,25 +1,25 @@
 /* eslint-disable security/detect-object-injection */
 // The objects being injected are always specified by the API //
-import { request, RequestOptions } from "https";
-import { stringify } from "querystring";
+import { request, RequestOptions } from "node:https";
+import { stringify } from "node:querystring";
 import { create } from "xmlbuilder2";
 import type {
   AddressValidateRequest,
   AddressValidateResponse,
-} from "../address-validate";
+} from "../address-validate.js";
 import type {
   CityStateLookupRequest,
   CityStateLookupResponse,
-} from "../lookups/city-state-lookup";
+} from "../lookups/city-state-lookup.js";
 import type {
   RateV4Request,
   RateV4Response,
-} from "../lookups/pricing-rate-lookup";
+} from "../lookups/pricing-rate-lookup.js";
 import type {
   ZipCodeLookupRequest,
   ZipCodeLookupResponse,
-} from "../lookups/zip-code-lookup";
-import type { Config, ErrorResponse } from "../usps";
+} from "../lookups/zip-code-lookup.js";
+import type { Config, ErrorResponse } from "../usps.js";
 
 export interface USPSResponse {
   AddressValidateResponse?: AddressValidateResponse;

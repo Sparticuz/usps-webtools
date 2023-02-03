@@ -1,6 +1,6 @@
-import type USPSClass from "../usps";
-import type { ErrorResponse } from "../usps";
-import callUSPS from "../utils/request";
+import type USPSClass from "../usps.js";
+import type { ErrorResponse } from "../usps.js";
+import callUSPS from "../utils/request.js";
 
 export interface PricingRateInput {
   Container?: string;

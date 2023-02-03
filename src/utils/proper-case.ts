@@ -32,6 +32,7 @@ export default (value: string): string => {
     "With",
   ];
   for (const [index] of Object.keys(lowers).entries()) {
+    // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
     string = string.replace(new RegExp(`\\s${lowers[index]}\\s`, "g"), (txt) =>
       txt.toLowerCase()
     );
@@ -40,6 +41,7 @@ export default (value: string): string => {
   // Certain words such as initialisms or acronyms should be left uppercase
   const uppers = ["Ne", "Nw", "Po", "Se", "Sw"];
   for (const [index] of Object.keys(uppers).entries()) {
+    // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
     string = string.replace(new RegExp(`\\b${uppers[index]}\\b`, "g"), (txt) =>
       txt.toUpperCase()
     );

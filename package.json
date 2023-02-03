@@ -1,10 +1,21 @@
 {
   "name": "usps-webtools-promise",
-  "author": "Kyle McNally <kyle@kmcnally.net>",
-  "description": "API wrapper for the USPS Web-Tools, with Promises!",
   "version": "4.0.4",
-  "main": "./dist/usps.js",
-  "types": "./dist/usps.d.ts",
+  "description": "API wrapper for the USPS Web-Tools, with Promises!",
+  "keywords": [
+    "usps",
+    "web-tools",
+    "web",
+    "tools",
+    "address",
+    "validation",
+    "standardization"
+  ],
+  "repository": "https://github.com/Sparticuz/usps-webtools-promise.git",
+  "license": "MIT",
+  "author": {
+    "name": "Kyle McNally <kyle@kmcnally.net>"
+  },
   "contributors": [
     {
       "name": "Sherod Taylor",
@@ -19,48 +30,38 @@
       "email": "scottspork@gmail.com"
     }
   ],
+  "type": "module",
+  "exports": "./dist/usps.js",
+  "types": "./dist/usps.d.ts",
   "scripts": {
-    "lint": "eslint \"**/*.[jt]s\"",
     "build": "rm -rf dist && tsc -p tsconfig.build.json",
-    "test": "c8 --reporter=lcov --reporter=text --all --include=src ava --timeout=30s"
+    "lint": "eslint \"**/*.[jt]s\"",
+    "test": "c8 --reporter=lcov --reporter=text --all --include=src ava"
   },
-  "keywords": [
-    "usps",
-    "web-tools",
-    "web",
-    "tools",
-    "address",
-    "validation",
-    "standardization"
-  ],
+  "ava": {
+    "extensions": {
+      "ts": "module"
+    },
+    "nodeArguments": [
+      "--loader=ts-node/esm"
+    ]
+  },
   "dependencies": {
     "xmlbuilder2": "^3.0.2"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.2.0",
-    "@sparticuz/eslint-config": "^7.1.8",
-    "@tsconfig/node14": "^1.0.3",
+    "@sparticuz/eslint-config": "^7.2.0",
+    "@tsconfig/node16-strictest-esm": "^1.0.3",
     "@types/node": "^16.11.64",
-    "@typescript-eslint/eslint-plugin": "^5.39.0",
-    "@typescript-eslint/parser": "^5.39.0",
-    "ava": "^4.3.3",
+    "ava": "^5.1.1",
     "c8": "^7.12.0",
-    "eslint": "^8.24.0",
-    "prettier": "^2.7.1",
+    "eslint": "^8.33.0",
+    "prettier": "^2.8.3",
     "ts-node": "^10.9.1",
-    "typescript": "^4.8.4"
+    "typescript": "^4.9.5"
   },
-  "repository": "https://github.com/Sparticuz/usps-webtools-promise.git",
   "engines": {
-    "node": ">=12.x"
-  },
-  "license": "MIT",
-  "ava": {
-    "extensions": [
-      "ts"
-    ],
-    "require": [
-      "ts-node/register/transpile-only"
-    ]
+    "node": ">=16"
   }
 }

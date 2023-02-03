@@ -1,6 +1,6 @@
 /* eslint-disable no-new */
 import test from "ava";
-import USPS from "../src/usps";
+import USPS from "../src/usps.js";
 
 test("USPS should throw an exception when constructor is called without config object", (t) => {
   t.throws(() => {

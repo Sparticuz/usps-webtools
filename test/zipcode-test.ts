@@ -1,6 +1,7 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 import test from "ava";
-import USPS from "../src/usps";
-import type { Address } from "../src/usps";
+import USPS from "../src/usps.js";
+import type { Address } from "../src/usps.js";
 
 const usps = new USPS({
   userId: process.env["USPS_ID"] as string,

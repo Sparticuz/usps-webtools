@@ -1,18 +1,18 @@
 import test from "ava";
-import USPS from "../src/usps";
-import type { CityStateLookupResponse } from "../src/lookups/city-state-lookup";
+import USPS from "../src/usps.js";
+import type { CityStateLookupResponse } from "../src/lookups/city-state-lookup.js";
 
 const usps = new USPS({
   userId: process.env["USPS_ID"] as string,
 });
-
+/*
 // Error typeguard: TODO
 function isError(
   address: CityStateLookupResponse["ZipCode"] | Error
 ): address is Error {
   return (address as CityStateLookupResponse["ZipCode"])?.City !== undefined;
 }
-
+*/
 test("#cityStateLookup() should return the city when passed a zipcode", async (t) => {
   const address = (await usps.cityStateLookup(
     "98031"
