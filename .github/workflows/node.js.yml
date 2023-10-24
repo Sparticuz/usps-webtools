@@ -28,3 +28,8 @@ jobs:
       - run: npm test
         env:
           USPS_ID: ${{ secrets.USPS_ID }}
+      - name: Coverage
+        if: startsWith(matrix.node-version, '18.')
+        uses: romeovs/lcov-reporter-action@v0.3.1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
