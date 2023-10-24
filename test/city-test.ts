@@ -1,6 +1,7 @@
 import test from "ava";
-import USPS from "../src/usps.js";
+
 import type { CityStateLookupResponse } from "../src/lookups/city-state-lookup.js";
+import USPS from "../src/usps.js";
 
 const usps = new USPS({
   userId: process.env["USPS_ID"]!,

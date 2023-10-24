@@ -1,7 +1,7 @@
 import verify from "./address-validate.js";
-import zipCodeLookup from "./lookups/zip-code-lookup.js";
 import cityStateLookup from "./lookups/city-state-lookup.js";
 import pricingRateLookup from "./lookups/pricing-rate-lookup.js";
+import zipCodeLookup from "./lookups/zip-code-lookup.js";
 
 export interface ErrorResponse {
   Description: string;

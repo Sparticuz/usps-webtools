@@ -1,8 +1,11 @@
 /* eslint-disable security/detect-object-injection */
 // The objects being injected are always specified by the API //
+
 import { request, RequestOptions } from "node:https";
 import { stringify } from "node:querystring";
+
 import { create } from "xmlbuilder2";
+
 import type {
   AddressValidateRequest,
   AddressValidateResponse,
