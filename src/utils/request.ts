@@ -32,7 +32,7 @@ export interface USPSResponse {
 // This function runs the actual request. I've abstracted it out so it
 // can be used independently of AWS
 const makeRequest = async (
-  options: string | RequestOptions | URL
+  options: string | RequestOptions | URL,
 ): Promise<USPSResponse> =>
   new Promise((resolve, reject) => {
     // This is the actual request
@@ -71,7 +71,7 @@ export default async (
     | AddressValidateRequest
     | ZipCodeLookupRequest
     | CityStateLookupRequest
-    | RateV4Request
+    | RateV4Request,
 ): Promise<
   | AddressValidateResponse
   | ZipCodeLookupResponse
@@ -131,14 +131,9 @@ export default async (
     | ZipCodeLookupResponse
     | CityStateLookupResponse
     | RateV4Response;
-  if (
-    uspsResponse &&
-    // @ts-expect-error It does expect a string
-    uspsResponse[responseName] &&
-    // @ts-expect-error It does expect a string
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    uspsResponse[responseName][property]
-  ) {
+  // @ts-expect-error It does expect a string
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+  if (uspsResponse?.[responseName]?.[property]) {
     // @ts-expect-error It does expect a string
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
     specificResult = uspsResponse[responseName][property];

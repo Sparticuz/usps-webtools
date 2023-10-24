@@ -6,7 +6,7 @@ This package was forked from [MadisonReed/usps-webtools](https://github.com/Madi
 
 ### Installation:
 
-``` sh
+```sh
 npm install usps-webtools-promise
 ```
 
@@ -14,10 +14,10 @@ npm install usps-webtools-promise
 
 Initializing the usps model with a user id.
 
-__Example:__
+**Example:**
 
-``` js
-const USPS = require('usps-webtools-promise').default;
+```js
+const USPS = require("usps-webtools-promise").default;
 // or
 import USPS from "usps-webtools-promise";
 
@@ -27,7 +27,7 @@ const usps = new USPS({
   // Staging will run all functions on the USPS Staging servers instead of Production. Defaults to false.
   staging: boolean,
   // This can be created by going to https://www.usps.com/business/web-tools-apis/ and registering for an id
-  userId: 'USPS User id',
+  userId: "USPS User id",
 });
 ```
 
@@ -37,18 +37,20 @@ Verify takes one parameter: object
 
 object: Address1, Address2, City, State, Zip
 
-__Example__
+**Example**
 
-``` js
-usps.verify({
-  Address1: '322 3rd st.',
-  Address2: 'Apt 2',
-  City: 'San Francisco',
-  State: 'CA',
-  Zip5: '94103'
-}).then(address => {
-  console.log(address);
-});
+```js
+usps
+  .verify({
+    Address1: "322 3rd st.",
+    Address2: "Apt 2",
+    City: "San Francisco",
+    State: "CA",
+    Zip5: "94103",
+  })
+  .then((address) => {
+    console.log(address);
+  });
 ```
 
 ### zipCodeLookup(object)
@@ -57,14 +59,14 @@ zipCodeLookup takes one parameter: object.
 
 object: Address1, Address2, City, State
 
-__Example__
+**Example**
 
-``` js
+```js
 const address = await usps.zipCodeLookup({
-  Address1: '322 3rd st.',
-  Address2: 'Apt 2',
-  City: 'San Francisco',
-  State: 'CA'
+  Address1: "322 3rd st.",
+  Address2: "Apt 2",
+  City: "San Francisco",
+  State: "CA",
 });
 
 console.log(address);
@@ -76,13 +78,15 @@ cityStateLookup takes one parameter: zipcode.
 
 zipcode: 5 digit Zip Code as a string
 
-__Example__
+**Example**
 
-``` js
-const result = await usps.cityStateLookup('94107');
+```js
+const result = await usps.cityStateLookup("94107");
 console.log(result);
 ```
+
 ### Coverage
+
 ```
 -------------------------|---------|----------|---------|---------|----------------------------------
 File                     | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s

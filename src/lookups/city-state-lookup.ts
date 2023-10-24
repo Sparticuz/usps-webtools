@@ -21,7 +21,7 @@ export interface CityStateLookupResponse {
 // eslint-disable-next-line func-names
 export default async function (
   this: USPSClass,
-  zip: string
+  zip: string,
 ): Promise<CityStateLookupResponse["ZipCode"] | Error> {
   let response;
   try {
@@ -34,7 +34,7 @@ export default async function (
         ZipCode: {
           Zip5: zip,
         },
-      }
+      },
     )) as CityStateLookupResponse["ZipCode"];
     if (response) {
       if (this.config.properCase) {

@@ -4,7 +4,7 @@ require("@rushstack/eslint-patch/modern-module-resolution");
 module.exports = {
   extends: ["@sparticuz/eslint-config"],
   parserOptions: {
-    ecmaVersion: 2020,
+    ecmaVersion: 2022,
     project: "./tsconfig.json",
     sourceType: "module",
   },

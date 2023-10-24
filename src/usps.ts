@@ -29,10 +29,12 @@ export interface Address {
 }
 
 export default class {
+  public cityStateLookup = cityStateLookup;
+
   config: Config;
 
   constructor(config: Config) {
-    if (!(config && config.userId)) {
+    if (!config?.userId) {
       throw new Error("Must pass USPS userId");
     }
     this.config = {
@@ -40,11 +42,9 @@ export default class {
     };
   }
 
-  public cityStateLookup = cityStateLookup;
-
   public pricingRateV4 = pricingRateLookup;
 
-  public zipCodeLookup = zipCodeLookup;
-
   public verify = verify;
+
+  public zipCodeLookup = zipCodeLookup;
 }

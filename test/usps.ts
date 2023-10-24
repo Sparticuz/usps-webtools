@@ -15,6 +15,6 @@ test("USPS should throw an exception when constructor is called without config.u
       // @ts-expect-error I'm testing this error
       new USPS({
         staging: true,
-      })
+      }),
   );
 });

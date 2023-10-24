@@ -32,7 +32,7 @@ export interface ZipCodeLookupResponse {
 // eslint-disable-next-line sonarjs/cognitive-complexity, func-names
 export default async function (
   this: USPSClass,
-  address: Address
+  address: Address,
 ): Promise<Address | Error> {
   let response;
   try {
@@ -43,12 +43,12 @@ export default async function (
       this.config,
       {
         Address: {
-          Address1: address.Address2 || "",
+          Address1: address.Address2 ?? "",
           Address2: address.Address1,
           City: address.City,
           State: address.State,
         },
-      }
+      },
     )) as ZipCodeLookupResponse["Address"];
     if (response) {
       if (this.config.properCase) {

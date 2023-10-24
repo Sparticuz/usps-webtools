@@ -1,10 +1,9 @@
-/* eslint-disable sonarjs/no-duplicate-string */
 import test from "ava";
 import USPS from "../src/usps.js";
 import type { Address } from "../src/usps.js";
 
 const usps = new USPS({
-  userId: process.env["USPS_ID"] as string,
+  userId: process.env["USPS_ID"]!,
 });
 
 test("Zipcode Lookup should return the address with zip", async (t) => {
@@ -14,13 +13,13 @@ test("Zipcode Lookup should return the address with zip", async (t) => {
     City: "Oakland",
     State: "CA",
   })) as Address;
-  t.is(`${address.Zip5 as string}-${address.Zip4 as string}`, "94607-3785");
+  t.is(`${address.Zip5!}-${address.Zip4!}`, "94607-3785");
 });
 
 test("Zipcode Lookup should return proper case", async (t) => {
   const uspsCase = new USPS({
     properCase: true,
-    userId: process.env["USPS_ID"] as string,
+    userId: process.env["USPS_ID"]!,
   });
   const address = (await uspsCase.zipCodeLookup({
     Address1: "121 EMBARCADERO WEST",

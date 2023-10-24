@@ -1,9 +1,9 @@
 /* eslint-disable security/detect-object-injection */
 /* eslint-disable security/detect-non-literal-regexp */
 export default (value: string): string => {
-  let string = value.replace(
-    /([^\W_]+[^\s-]*) */g,
-    (txt) => txt.charAt(0).toUpperCase() + txt.slice(1).toLowerCase()
+  let string = value.replaceAll(
+    /[^\W_][^\s-]* */g,
+    (txt) => txt.charAt(0).toUpperCase() + txt.slice(1).toLowerCase(),
   );
 
   // Certain minor words should be left lowercase unless
@@ -32,18 +32,18 @@ export default (value: string): string => {
     "With",
   ];
   for (const [index] of Object.keys(lowers).entries()) {
-    // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-    string = string.replace(new RegExp(`\\s${lowers[index]}\\s`, "g"), (txt) =>
-      txt.toLowerCase()
+    string = string.replaceAll(
+      new RegExp(`\\s${lowers[index]}\\s`, "g"),
+      (txt) => txt.toLowerCase(),
     );
   }
 
   // Certain words such as initialisms or acronyms should be left uppercase
   const uppers = ["Ne", "Nw", "Po", "Se", "Sw"];
   for (const [index] of Object.keys(uppers).entries()) {
-    // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-    string = string.replace(new RegExp(`\\b${uppers[index]}\\b`, "g"), (txt) =>
-      txt.toUpperCase()
+    string = string.replaceAll(
+      new RegExp(`\\b${uppers[index]}\\b`, "g"),
+      (txt) => txt.toUpperCase(),
     );
   }
 

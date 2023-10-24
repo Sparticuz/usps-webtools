@@ -79,7 +79,7 @@ interface RateV4Postage {
         ServiceID?: string;
         ServiceName?: string;
       };
-    }
+    },
   ];
 }
 
@@ -111,22 +111,22 @@ export interface RateV4Response {
 // eslint-disable-next-line func-names
 export default async function (
   this: USPSClass,
-  pricingRate: PricingRateInput
+  pricingRate: PricingRateInput,
 ): Promise<RateV4Postage | Error> {
   const parameters: RateV4Request = {
     Package: {
       "@ID": "1ST",
-      Container: pricingRate.Container || "",
+      Container: pricingRate.Container ?? "",
       Girth: pricingRate.Girth,
       Height: pricingRate.Height,
       Length: pricingRate.Length,
       Machinable: pricingRate.Machinable,
-      Ounces: pricingRate.Ounces || "",
-      Pounds: pricingRate.Pounds || "",
-      Service: pricingRate.Service || "PRIORITY",
+      Ounces: pricingRate.Ounces ?? "",
+      Pounds: pricingRate.Pounds ?? "",
+      Service: pricingRate.Service ?? "PRIORITY",
       Width: pricingRate.Width,
-      ZipDestination: pricingRate.ZipDestination || "",
-      ZipOrigination: pricingRate.ZipOrigination || "55401",
+      ZipDestination: pricingRate.ZipDestination ?? "",
+      ZipOrigination: pricingRate.ZipOrigination ?? "55401",
     },
   };
 
@@ -137,9 +137,9 @@ export default async function (
       "RateV4",
       "Package",
       this.config,
-      parameters
+      parameters,
     )) as RateV4Response;
-    if (response && response.Package) {
+    if (response?.Package) {
       return response.Package.Postage;
     }
     throw new Error("Can't find result");
