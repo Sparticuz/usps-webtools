@@ -1,6 +1,6 @@
 {
   "name": "usps-webtools-promise",
-  "version": "6.0.0",
+  "version": "6.0.1",
   "description": "API wrapper for the USPS Web-Tools, with Promises!",
   "keywords": [
     "usps",
