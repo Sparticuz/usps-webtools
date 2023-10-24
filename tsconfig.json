@@ -1,13 +1,10 @@
 {
-  "extends": "@tsconfig/node16-strictest-esm/tsconfig.json",
+  "extends": ["@tsconfig/node18/tsconfig", "@tsconfig/strictest/tsconfig"],
   "compilerOptions": {
-    "lib": ["DOM"],
+    "lib": ["ES2021.String"],
     "declaration": true,
     "outDir": "dist",
     "exactOptionalPropertyTypes": false
   },
-  "include": [
-    "src",
-    "test"
-  ]
+  "include": ["src", "test"]
 }
