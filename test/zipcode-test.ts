@@ -1,6 +1,6 @@
 import test from "ava";
-import USPS from "../src/usps.js";
-import type { Address } from "../src/usps.js";
+
+import USPS, { type Address } from "../src/usps.js";
 
 const usps = new USPS({
   userId: process.env["USPS_ID"]!,
