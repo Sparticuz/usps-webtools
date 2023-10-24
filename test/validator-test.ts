@@ -3,7 +3,7 @@ import test from "ava";
 import USPS from "../src/usps.js";
 
 const usps = new USPS({
-  userId: process.env["USPS_ID"] as string,
+  userId: process.env["USPS_ID"]!,
 });
 
 test("Address verify should validate apartment", async (t) => {
@@ -20,7 +20,7 @@ test("Address verify should validate apartment", async (t) => {
 test("Address return proper case", async (t) => {
   const uspsCase = new USPS({
     properCase: true,
-    userId: process.env["USPS_ID"] as string,
+    userId: process.env["USPS_ID"]!,
   });
   const address = await uspsCase.verify({
     Address1: "11205 SE 233RD PL.",
@@ -66,6 +66,6 @@ test("Multiple Businesses as single locaion", async (t) => {
   });
   t.is(
     error?.message,
-    "Error: Multiple addresses were found for the information you entered, and no default exists."
+    "Error: Multiple addresses were found for the information you entered, and no default exists.",
   );
 });

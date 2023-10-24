@@ -44,17 +44,18 @@ export interface AddressValidateResponse {
 // eslint-disable-next-line sonarjs/cognitive-complexity, func-names
 export default async function (
   this: USPSClass,
-  address: Address
+  address: Address,
 ): Promise<Address> {
   const parameters: AddressValidateRequest["Address"] = {
-    Address1: address.Address2 || "",
-    Address2: address.Address1 || "",
-    City: address.City || "",
-    State: address.State || "",
-    Urbanization: address.Urbanization || "",
-    Zip5: address.Zip5 || "",
+    Address1: address.Address2 ?? "",
+    Address2: address.Address1 ?? "",
+    City: address.City ?? "",
+    State: address.State ?? "",
+    Urbanization: address.Urbanization ?? "",
+    Zip5: address.Zip5 ?? "",
+    // USPS expects Zip4 after Zip5
     // eslint-disable-next-line sort-keys
-    Zip4: address.Zip4 || "",
+    Zip4: address.Zip4 ?? "",
   };
   let response: AddressValidateResponse;
   try {
@@ -65,9 +66,10 @@ export default async function (
       this.config,
       {
         Revision: 1,
+        // USPS expects Address to come after Revision
         // eslint-disable-next-line sort-keys
         Address: parameters,
-      }
+      },
     )) as AddressValidateResponse;
     if (response) {
       const switchAddresses = response.Address1;
