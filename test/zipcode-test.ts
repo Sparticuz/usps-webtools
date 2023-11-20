@@ -1,4 +1,5 @@
 import test from "ava";
+import 'dotenv/config'
 
 import USPS, { type Address } from "../src/usps.js";
 
