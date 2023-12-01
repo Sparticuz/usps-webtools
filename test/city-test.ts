@@ -1,5 +1,4 @@
 import test from "ava";
-import 'dotenv/config'
 
 import type { CityStateLookupResponse } from "../src/lookups/city-state-lookup.js";
 import USPS from "../src/usps.js";

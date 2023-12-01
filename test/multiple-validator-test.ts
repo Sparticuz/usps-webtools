@@ -1,7 +1,5 @@
 /* eslint-disable sonarjs/no-duplicate-string */
-
 import test from "ava";
-import 'dotenv/config'
 
 import USPS from "../src/usps.js";
 
