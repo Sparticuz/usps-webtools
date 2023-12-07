@@ -69,7 +69,7 @@ test("Multiple address verify should return the same number of addresses.", asyn
 
 test("Multiple address verify should only accept addesses in an array.", async (t) => {
     const error = await t.throwsAsync(async () => {
-        // @ts-expect-error
+        // @ts-expect-error Testing invalid input
         await usps.verifyMultiple(fourAddresses[0]);
     });
     t.is(
@@ -109,7 +109,7 @@ test("Multiple address verify should handle proper case the same as single verif
 
 test("Multiple address verify should contain error message for any unverifiable addresses in a list.", async (t) => {
     const addresses = await usps.verifyMultiple([...moreAddresses, invalidAddress]);
-    t.false(addresses[0]?.hasOwnProperty("Error"));
-    t.false(addresses[1]?.hasOwnProperty("Error"));
+    t.false("Error" in addresses[0]!);
+    t.false("Error" in addresses[1]!);
     t.is(addresses[2]?.Error?.Description, "Multiple addresses were found for the information you entered, and no default exists.");
 });

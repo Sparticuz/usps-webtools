@@ -21,7 +21,7 @@ export default async function (
     }
 
     if (Array.isArray(addresses) === false) {
-        throw new Error("Must pass an array of addresses. For single address use 'verify' method.");
+        throw new TypeError("Must pass an array of addresses. For single address use 'verify' method.");
     }
 
     const Addresses: MultipleAddress[] = addresses.map((address: Address, index: number) => ({
@@ -39,6 +39,8 @@ export default async function (
 
     const parameters: MultipleAddressValidateRequest = {
         Revision: 1,
+        // USPS expects Address to come after Revision
+        // eslint-disable-next-line sort-keys
         Address: Addresses,
     };
 
@@ -52,29 +54,30 @@ export default async function (
             parameters,
         )) as AddressValidateResponse[];
         if (response) {
-            const addresses = response.map((addr) => {
-                const switchAddresses = addr.Address1;
-                addr.Address1 = addr.Address2;
-                addr.Address2 = switchAddresses;
+            return response.map((addr) => {
+                const fAddr = { ...addr };
+
+                const switchAddresses = fAddr.Address1;
+                fAddr.Address1 = fAddr.Address2;
+                fAddr.Address2 = switchAddresses;
                 if (this.config.properCase) {
-                    addr.Address1 = addr.Address1
-                        ? properCase(addr.Address1)
+                    fAddr.Address1 = fAddr.Address1
+                        ? properCase(fAddr.Address1)
                         : undefined;
-                    addr.Address2 = addr.Address2
-                        ? properCase(addr.Address2)
+                    fAddr.Address2 = fAddr.Address2
+                        ? properCase(fAddr.Address2)
                         : undefined;
-                    addr.City = addr.City ? properCase(addr.City) : undefined;
-                    addr.FirmName = addr.FirmName
-                        ? properCase(addr.FirmName)
+                    fAddr.City = fAddr.City ? properCase(fAddr.City) : undefined;
+                    fAddr.FirmName = fAddr.FirmName
+                        ? properCase(fAddr.FirmName)
                         : undefined;
                 }
-                addr.Zip4 =
-                    typeof addr.Zip4 === "object"
+                fAddr.Zip4 =
+                    typeof fAddr.Zip4 === "object"
                         ? undefined
-                        : addr.Zip4?.toString();
-                return addr as MultipleAddress;
-            })
-            return addresses;
+                        : fAddr.Zip4?.toString();
+                return fAddr as MultipleAddress;
+            });
         }
         throw new Error("Can't find results");
     } catch (error) {
