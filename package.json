@@ -51,17 +51,17 @@
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.1.1",
-    "@rushstack/eslint-patch": "^1.5.1",
-    "@sparticuz/eslint-config": "^7.4.8",
+    "@rushstack/eslint-patch": "^1.6.0",
+    "@sparticuz/eslint-config": "^7.5.0",
     "@tsconfig/node18": "^18.2.2",
     "@tsconfig/strictest": "^2.0.2",
-    "@types/node": "^16.18.59",
-    "ava": "^5.3.1",
+    "@types/node": "^16.18.68",
+    "ava": "^6.0.1",
     "c8": "^8.0.1",
-    "eslint": "^8.52.0",
-    "prettier": "^3.0.3",
-    "tsx": "^3.14.0",
-    "typescript": "^5.2.2"
+    "eslint": "^8.55.0",
+    "prettier": "^3.1.0",
+    "tsx": "^4.6.2",
+    "typescript": "^5.3.3"
   },
   "engines": {
     "node": ">=16"
