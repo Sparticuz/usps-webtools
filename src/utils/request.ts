@@ -11,6 +11,9 @@ import type {
   AddressValidateResponse,
 } from "../address-validate.js";
 import type {
+  MultipleAddressValidateRequest,
+} from "../multiple-address-validate.js";
+import type {
   CityStateLookupRequest,
   CityStateLookupResponse,
 } from "../lookups/city-state-lookup.js";
@@ -72,6 +75,7 @@ export default async (
   config: Config,
   parameters:
     | AddressValidateRequest
+    | MultipleAddressValidateRequest
     | ZipCodeLookupRequest
     | CityStateLookupRequest
     | RateV4Request,

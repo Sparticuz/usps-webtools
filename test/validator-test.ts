@@ -1,5 +1,4 @@
 /* eslint-disable sonarjs/no-duplicate-string */
-
 import test from "ava";
 
 import USPS from "../src/usps.js";

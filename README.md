@@ -31,6 +31,35 @@ const usps = new USPS({
 });
 ```
 
+### verifyMultiple(object[])
+
+Verify takes one parameter: object[]
+
+object[]: [{Address1, Address2, City, State, Zip}]  
+
+**Example**
+
+```js
+usps
+  .verifyMultiple([{
+    Address1: "322 3rd st.",
+    Address2: "Apt 2",
+    City: "San Francisco",
+    State: "CA",
+    Zip5: "94103",
+  }, {
+    Address1: "322 3rd st.",
+    Address2: "Apt 2",
+    City: "San Francisco",
+    State: "CA",
+    Zip5: "94103",
+  }
+  ])
+  .then((address) => {
+    console.log(address);
+  });
+```
+
 ### verify(object)
 
 Verify takes one parameter: object
@@ -88,19 +117,20 @@ console.log(result);
 ### Coverage
 
 ```
--------------------------|---------|----------|---------|---------|----------------------------------
-File                     | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
--------------------------|---------|----------|---------|---------|----------------------------------
-All files                |   91.78 |    59.61 |    87.5 |   91.78 |
- src                     |   99.32 |    47.36 |     100 |   99.32 |
-  address-validate.ts    |   98.97 |    33.33 |     100 |   98.97 | 94
-  usps.ts                |     100 |      100 |     100 |     100 |
- src/lookups             |   85.55 |       60 |   66.66 |   85.55 |
-  city-state-lookup.ts   |   97.95 |       80 |     100 |   97.95 | 45
-  pricing-rate-lookup.ts |   75.16 |      100 |       0 |   75.16 | 113-149
-  zip-code-lookup.ts     |   98.61 |       50 |     100 |   98.61 | 68
- src/utils               |   94.58 |    72.22 |     100 |   94.58 |
-  proper-case.ts         |   97.95 |      100 |     100 |   97.95 | 36
-  request.ts             |    93.5 |    61.53 |     100 |    93.5 | 48-49,55,115-116,120-122,153-154
--------------------------|---------|----------|---------|---------|----------------------------------
+-------------------------------|---------|----------|---------|---------|------------------------------
+File                           | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
+-------------------------------|---------|----------|---------|---------|------------------------------
+All files                      |   91.64 |    62.65 |   93.75 |   91.64 |
+ src                           |   95.85 |    55.55 |     100 |   95.85 |
+  address-validate.ts          |      96 |     37.5 |     100 |      96 | 81,84,87,93
+  multiple-address-validate.ts |   92.77 |    54.54 |     100 |   92.77 | 62,65,68,80-82
+  usps.ts                      |     100 |      100 |     100 |     100 |
+ src/lookups                   |   84.81 |    66.66 |   83.33 |   84.81 |
+  city-state-lookup.ts         |     100 |    83.33 |     100 |     100 | 45
+  pricing-rate-lookup.ts       |   74.49 |      100 |      50 |   74.49 | 112-149
+  zip-code-lookup.ts           |   95.83 |    54.54 |     100 |   95.83 | 57,60,63
+ src/utils                     |   95.65 |       75 |     100 |   95.65 |
+  proper-case.ts               |     100 |      100 |     100 |     100 |
+  request.ts                   |   94.23 |    64.28 |     100 |   94.23 | 54-55,61,112,122-123,127-129
+-------------------------------|---------|----------|---------|---------|------------------------------
 ```
